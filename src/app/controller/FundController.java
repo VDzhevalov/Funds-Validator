@@ -8,6 +8,7 @@ import app.view.FundOperationsView;
 
 import static app.enums.OperationType.PURCHASE;
 import static app.enums.OperationType.REFUND;
+import static app.utils.Printer.print;
 import static app.utils.Printer.println;
 import static app.view.FundOperationsView.getCurrency;
 import static app.view.FundOperationsView.getOperation;
@@ -46,12 +47,12 @@ public class FundController {
     }
 
     public static void purchase(Account account) {
-        println(new FundOperationsTitleFormatter(account));
+        print(new FundOperationsTitleFormatter(account));
         AccountManager.withdrawMoney(account, FundOperationsView.getAmount(), account.getCurrency());
     }
 
     public static void refund(Account account) {
-        println(new FundOperationsTitleFormatter(account));
+        print(new FundOperationsTitleFormatter(account));
         AccountManager.depositMoney(account, FundOperationsView.getAmount(), account.getCurrency());
     }
 }
