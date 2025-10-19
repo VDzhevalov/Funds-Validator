@@ -2,8 +2,9 @@ package app;
 
 import app.exceptions.FundsException;
 
-import java.util.InputMismatchException;
 import java.util.Scanner;
+
+import static app.validator.InputValidator.validateInputAmount;
 
 public class Main {
     static double balance;
@@ -20,28 +21,16 @@ public class Main {
     private static double getAmount() {
         System.out.printf("Balance is USD %.2f.%n" +
                 "Enter purchase amount, USD: ", balance);
-        double amount;
+        String amount;
         Scanner scanner = new Scanner(System.in);
         while (true) {
-            try {
-                amount = scanner.nextDouble();
-            } catch (InputMismatchException ex) {
-                System.out.println("Invalid input: amount must be a number. Please try again.");
-                scanner.next();
+            amount = scanner.nextLine();
+            if (!validateInputAmount(amount)) {
                 continue;
-            }
-            if (amount < 0) {
-                try {
-                    throw new FundsException("Invalid input: amount can't be negative. Please try again.");
-                } catch (FundsException ex) {
-                    System.out.println(ex.getMessage());
-                    continue;
-                }
             }
             break;
         }
-
-        return amount;
+        return Double.parseDouble(amount);
     }
 
     // Метод валідації наявних коштів
