@@ -1,4 +1,4 @@
-package app;
+package app.exceptions;
 
 public class FundsException extends RuntimeException {
 

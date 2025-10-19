@@ -1,5 +1,7 @@
 package app;
 
+import app.exceptions.FundsException;
+
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
