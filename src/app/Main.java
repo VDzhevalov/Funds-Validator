@@ -26,13 +26,13 @@ public class Main {
             try {
                 amount = scanner.nextDouble();
             } catch (InputMismatchException ex) {
-                System.out.println("Invalid input: amount must be a number.");
+                System.out.println("Invalid input: amount must be a number. Please try again.");
                 scanner.next();
                 continue;
             }
             if (amount < 0) {
                 try {
-                    throw new FundsException("Invalid input: amount can't be negative");
+                    throw new FundsException("Invalid input: amount can't be negative. Please try again.");
                 } catch (FundsException ex) {
                     System.out.println(ex.getMessage());
                     continue;
