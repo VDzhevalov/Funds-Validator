@@ -3,10 +3,7 @@ package app.controller;
 import app.entity.Account;
 import app.exceptions.FundsException;
 import app.model.impl.AccountManager;
-import app.utils.formatters.CurrencyTitleFormatter;
-import app.utils.formatters.OperationDepositResultFormatter;
-import app.utils.formatters.OperationTitleFormatter;
-import app.utils.formatters.OperationWithdrawResultFormatter;
+import app.utils.formatters.*;
 import app.view.FundOperationsView;
 
 import static app.enums.OperationType.PURCHASE;
@@ -49,14 +46,12 @@ public class FundController {
     }
 
     public static void purchase(Account account) {
-        System.out.printf("Balance is %s %.2f.%n" +
-                "Enter purchase amount, %s: ", account.getCurrency(), account.getBalance(), account.getCurrency());
+        println(new FundOperationsTitleFormatter(account));
         AccountManager.withdrawMoney(account, FundOperationsView.getAmount(), account.getCurrency());
     }
 
     public static void refund(Account account) {
-        System.out.printf("Balance is %s %.2f.%n" +
-                "Enter purchase amount, %s: ", account.getCurrency(), account.getBalance(), account.getCurrency());
+        println(new FundOperationsTitleFormatter(account));
         AccountManager.depositMoney(account, FundOperationsView.getAmount(), account.getCurrency());
     }
 }
