@@ -1,5 +1,6 @@
 package app;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Main {
@@ -17,8 +18,28 @@ public class Main {
     private static double getAmount() {
         System.out.printf("Balance is USD %.2f.%n" +
                 "Enter purchase amount, USD: ", balance);
+        double amount;
         Scanner scanner = new Scanner(System.in);
-        return scanner.nextDouble();
+        while (true) {
+            try {
+                amount = scanner.nextDouble();
+            } catch (InputMismatchException ex) {
+                System.out.println("Invalid input: amount must be a number.");
+                scanner.next();
+                continue;
+            }
+            if (amount < 0) {
+                try {
+                    throw new FundsException("Invalid input: amount can't be negative");
+                } catch (FundsException ex) {
+                    System.out.println(ex.getMessage());
+                    continue;
+                }
+            }
+            break;
+        }
+
+        return amount;
     }
 
     // Метод валідації наявних коштів
