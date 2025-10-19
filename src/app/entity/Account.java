@@ -3,8 +3,8 @@ package app.entity;
 import app.enums.Currency;
 
 public class Account {
-    private double balance;
     private final Currency currency;
+    private double balance;
 
     public Account(double balance, Currency currency) {
         this.balance = balance;
@@ -12,7 +12,7 @@ public class Account {
     }
 
     public Account() {
-        this.balance = 1000.00;;
+        this.balance = 1000.00;
         this.currency = Currency.USD;
     }
 

@@ -4,7 +4,8 @@ import app.entity.Account;
 import app.enums.Currency;
 import app.exceptions.FundsException;
 
-import static app.validator.OperationValidator.*;
+import static app.validator.OperationValidator.isValidAmount;
+import static app.validator.OperationValidator.isValidCurrency;
 
 public class AccountManager {
 
@@ -16,7 +17,7 @@ public class AccountManager {
     }
 
     public static double depositMoney(Account account, double amount, Currency currency) throws FundsException {
-        if (isValidCurrency(account, currency)){
+        if (isValidCurrency(account, currency)) {
             account.changeBalance(account.getBalance() + amount);
         }
         return account.getBalance();

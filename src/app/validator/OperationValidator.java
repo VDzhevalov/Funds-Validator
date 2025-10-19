@@ -1,13 +1,13 @@
 package app.validator;
 
+import app.entity.Account;
 import app.enums.Currency;
 import app.exceptions.FundsException;
-import app.entity.Account;
 
 public class OperationValidator {
 
     // Валідація валюти
-    public static boolean isValidCurrency(Account account,Currency currency) throws FundsException {
+    public static boolean isValidCurrency(Account account, Currency currency) throws FundsException {
         if (account.getCurrency() != currency) {
             throw new FundsException("Currencies do not match");
         }

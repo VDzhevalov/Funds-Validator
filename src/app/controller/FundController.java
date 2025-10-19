@@ -9,8 +9,8 @@ import app.utils.formatters.OperationTitleFormatter;
 import app.utils.formatters.OperationWithdrawResultFormatter;
 import app.view.FundOperationsView;
 
-import static app.enums.OperationType.REFUND;
 import static app.enums.OperationType.PURCHASE;
+import static app.enums.OperationType.REFUND;
 import static app.utils.Printer.println;
 import static app.view.FundOperationsView.getCurrency;
 import static app.view.FundOperationsView.getOperation;
